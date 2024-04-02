@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { getProfile, login, logout, register } from "../controllers/user.controller.js";
 
 const userRouter = Router();
 // Routes for user

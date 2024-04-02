@@ -3,6 +3,8 @@ import cors from "cors";
 import express from "express";
 import morgan from "morgan";
 import { config } from "dotenv";
+import userRouter from "./routes/user.routes.js";
+import errorMiddleware from "./middlewares/error.middleware.js";
 config();
 
 const app = express();
@@ -24,10 +26,12 @@ app.get('/ping',(req,res)=>{
     res.send('pong');
 })
 
-//app.use('./api/v1/user',userRouter);
+app.use('./api/v1/user',userRouter);
 
 app.all('*',(req,res)=>{
     res.status(404).send("OOPS !! 404 Page not found");
 })
+
+app.use(errorMiddleware);
 
 export default app;
