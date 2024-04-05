@@ -32,6 +32,7 @@ export const register = async (req, res, next)=>{
    // TODO: File Upload
      // Upload file on cloudnary 
      if(req.file){ // if req k ander file hai to 
+        console.log(req.file);
             try {
                const result = await cloudinary.v2.uploader.upload(req.file.path, {
                   folder:'lms',
